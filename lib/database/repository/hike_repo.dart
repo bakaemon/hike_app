@@ -45,7 +45,7 @@ class HikeRepo {
         location: maps[i]['location'],
         date: maps[i]['date'],
         length: maps[i]['length'],
-        parking: maps[i]['parking'],
+        parking: maps[i]['parking'] == 1,
         desc: maps[i]['desc'],
         guide: maps[i]['guide'],
         difficulty: maps[i]['difficulty'],

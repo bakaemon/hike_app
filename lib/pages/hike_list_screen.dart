@@ -38,18 +38,15 @@ class _HikeListScreenState extends State<HikeListScreen> {
                 return ListTile(
                   title: Text(snapshot.data?[index].name ?? 'N/A'),
                   subtitle: Text(snapshot.data?[index].location ?? 'N/A'),
-                  trailing: Column(children: [
-                    IconButton(
-                      onPressed: () {
-                        if (snapshot.data?[index].id != null) {
-                          _repository.delete(snapshot.data![index].id!);
-                        }
-                        setState(() {});
-                      },
-                      icon: const Icon(Icons.delete),
-                    ),
-                    Text(snapshot.data?[index].date.toString() ?? 'N/A'),
-                  ]),
+                  trailing: IconButton(
+                    onPressed: () {
+                      if (snapshot.data?[index].id != null) {
+                        _repository.delete(snapshot.data![index].id!);
+                      }
+                      setState(() {});
+                    },
+                    icon: const Icon(Icons.delete),
+                  ),
                 );
               },
             );
@@ -61,14 +58,17 @@ class _HikeListScreenState extends State<HikeListScreen> {
         },
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          navigate<void>(
+        onPressed: () async {
+          await navigate<void>(
             context,
             HikeForm(
               db: widget.database,
             ),
             animation: NavigationAnimation.slideLeft,
           );
+          setState(() {
+            // refresh list
+          });
         },
         child: const Icon(Icons.add),
       ),

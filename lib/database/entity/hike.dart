@@ -3,7 +3,7 @@ class Hike {
   String? name;
   String? location;
   String? date;
-  double? length;
+  int? length;
   bool? parking;
   String? desc;
   String? guide;
