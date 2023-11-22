@@ -18,7 +18,9 @@ class AppDatabase {
               parking BOOLEAN,
               desc TEXT,
               guide TEXT,
-              difficulty TEXT
+              difficulty TEXT,
+              price LONG
+
             )''',
           );
         },
